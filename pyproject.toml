@@ -1,0 +1,48 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "analise_heineken"
+version = "0.0.1"
+description = "Otimizacao de pricing e calculo de elasticidade para maximizacao de Lucro Bruto."
+authors = [
+  { name = "jba1719@gmail.com" },
+]
+
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    
+]
+dependencies = [
+    "loguru",
+    "marimo>=0.20.2",
+    "nbconvert>=7.17.0",
+    "nbformat>=5.10.4",
+    "numpy>=2.2.6",
+    "pip",
+    "playwright>=1.58.0",
+    "polars>=1.38.1",
+    "pytest",
+    "python-dotenv",
+    "ruff",
+    "scikit-learn>=1.7.2",
+    "tqdm",
+    "typer",
+]
+requires-python = "~=3.10.0"
+
+
+[tool.ruff]
+line-length = 99
+src = ["analise_heineken"]
+include = ["pyproject.toml", "analise_heineken/**/*.py"]
+
+[tool.ruff.lint]
+extend-select = ["I"]  # Add import sorting
+
+[tool.ruff.lint.isort]
+known-first-party = ["analise_heineken"]
+force-sort-within-sections = true
+

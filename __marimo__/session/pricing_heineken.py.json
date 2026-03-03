@@ -1,0 +1,320 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.20.2"
+  },
+  "cells": [
+    {
+      "id": "fUfK",
+      "code_hash": "dd730f63724af013857758ad2afaf29c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"dossie-executivo-otimizacao-de-pricing-e-elasticidade-de-cesta\">\ud83c\udfaf Dossi\u00ea Executivo: Otimiza\u00e7\u00e3o de Pricing e Elasticidade de Cesta</h1>\n<div class=\"language-css+lasso highlight\"><pre><span></span><code><span class=\"o\">**</span><span class=\"nt\">Projeto</span><span class=\"o\">:**</span><span class=\"w\"> </span><span class=\"nt\">Auditoria</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"nt\">Repasse</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"nt\">Custo</span><span class=\"w\"> </span><span class=\"nt\">-</span><span class=\"w\"> </span><span class=\"nt\">Heineken</span><span class=\"w\"> </span><span class=\"nt\">LN</span><span class=\"w\"> </span><span class=\"nt\">330ml</span>\n<span class=\"o\">**</span><span class=\"nt\">Metodologia</span><span class=\"o\">:**</span><span class=\"w\"> </span><span class=\"nt\">CRISP-DM</span><span class=\"w\"> </span><span class=\"o\">(</span><span class=\"nt\">Cross-Industry</span><span class=\"w\"> </span><span class=\"nt\">Standard</span><span class=\"w\"> </span><span class=\"nt\">Process</span><span class=\"w\"> </span><span class=\"nt\">for</span><span class=\"w\"> </span><span class=\"nt\">Data</span><span class=\"w\"> </span><span class=\"nt\">Mining</span><span class=\"o\">)</span>\n\n<span class=\"nt\">---</span>\n\n<span class=\"err\">##</span><span class=\"w\"> </span><span class=\"nt\">1</span><span class=\"o\">.</span><span class=\"w\"> </span><span class=\"nt\">O</span><span class=\"w\"> </span><span class=\"nt\">Contexto</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"nt\">Neg\u00f3cio</span><span class=\"w\"> </span><span class=\"o\">(</span><span class=\"nt\">A</span><span class=\"w\"> </span><span class=\"nt\">Dor</span><span class=\"w\"> </span><span class=\"nt\">da</span><span class=\"w\"> </span><span class=\"nt\">Margem</span><span class=\"o\">)</span>\n<span class=\"nt\">A</span><span class=\"w\"> </span><span class=\"nt\">ind\u00fastria</span><span class=\"w\"> </span><span class=\"nt\">notificou</span><span class=\"w\"> </span><span class=\"nt\">a</span><span class=\"w\"> </span><span class=\"nt\">nossa</span><span class=\"w\"> </span><span class=\"nt\">rede</span><span class=\"w\"> </span><span class=\"nt\">sobre</span><span class=\"w\"> </span><span class=\"nt\">um</span><span class=\"w\"> </span><span class=\"nt\">aumento</span><span class=\"w\"> </span><span class=\"nt\">no</span><span class=\"w\"> </span><span class=\"nt\">custo</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"nt\">reposi\u00e7\u00e3o</span><span class=\"w\"> </span><span class=\"nt\">da</span><span class=\"w\"> </span><span class=\"o\">**</span><span class=\"nt\">Heineken</span><span class=\"w\"> </span><span class=\"nt\">Long</span><span class=\"w\"> </span><span class=\"nt\">Neck</span><span class=\"w\"> </span><span class=\"nt\">330ml</span><span class=\"o\">**,</span><span class=\"w\"> </span><span class=\"nt\">passando</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"o\">**</span><span class=\"nt\">R</span><span class=\"o\">$</span><span class=\"w\"> </span><span class=\"nt\">5</span><span class=\"o\">,</span><span class=\"nt\">00</span><span class=\"w\"> </span><span class=\"nt\">para</span><span class=\"w\"> </span><span class=\"nt\">R</span><span class=\"o\">$</span><span class=\"w\"> </span><span class=\"nt\">5</span><span class=\"o\">,</span><span class=\"nt\">50</span><span class=\"o\">**.</span>\n\n<span class=\"nt\">A</span><span class=\"w\"> </span><span class=\"nt\">resposta</span><span class=\"w\"> </span><span class=\"nt\">imediata</span><span class=\"w\"> </span><span class=\"o\">(</span><span class=\"nt\">e</span><span class=\"w\"> </span><span class=\"nt\">instintiva</span><span class=\"o\">)</span><span class=\"w\"> </span><span class=\"nt\">da</span><span class=\"w\"> </span><span class=\"nt\">opera\u00e7\u00e3o</span><span class=\"w\"> </span><span class=\"nt\">comercial</span><span class=\"w\"> </span><span class=\"nt\">foi</span><span class=\"w\"> </span><span class=\"nt\">sugerir</span><span class=\"w\"> </span><span class=\"nt\">o</span><span class=\"w\"> </span><span class=\"nt\">repasse</span><span class=\"w\"> </span><span class=\"nt\">integral</span><span class=\"w\"> </span><span class=\"nt\">desse</span><span class=\"w\"> </span><span class=\"nt\">aumento</span><span class=\"w\"> </span><span class=\"nt\">para</span><span class=\"w\"> </span><span class=\"nt\">o</span><span class=\"w\"> </span><span class=\"nt\">consumidor</span><span class=\"w\"> </span><span class=\"nt\">final</span><span class=\"o\">,</span><span class=\"w\"> </span><span class=\"nt\">subindo</span><span class=\"w\"> </span><span class=\"nt\">o</span><span class=\"w\"> </span><span class=\"nt\">pre\u00e7o</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"nt\">g\u00f4ndola</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"o\">**</span><span class=\"nt\">R</span><span class=\"o\">$</span><span class=\"w\"> </span><span class=\"nt\">6</span><span class=\"o\">,</span><span class=\"nt\">50</span><span class=\"w\"> </span><span class=\"nt\">para</span><span class=\"w\"> </span><span class=\"nt\">R</span><span class=\"o\">$</span><span class=\"w\"> </span><span class=\"nt\">7</span><span class=\"o\">,</span><span class=\"nt\">20</span><span class=\"o\">**.</span><span class=\"w\"> </span><span class=\"nt\">O</span><span class=\"w\"> </span><span class=\"nt\">objetivo</span><span class=\"w\"> </span><span class=\"nt\">dessa</span><span class=\"w\"> </span><span class=\"nt\">manobra</span><span class=\"w\"> </span><span class=\"nt\">seria</span><span class=\"w\"> </span><span class=\"nt\">proteger</span><span class=\"w\"> </span><span class=\"nt\">a</span><span class=\"w\"> </span><span class=\"nt\">margem</span><span class=\"w\"> </span><span class=\"nt\">percentual</span><span class=\"w\"> </span><span class=\"nt\">do</span><span class=\"w\"> </span><span class=\"nt\">setor</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"nt\">Bebidas</span><span class=\"o\">.</span>\n\n<span class=\"err\">##</span><span class=\"w\"> </span><span class=\"nt\">2</span><span class=\"o\">.</span><span class=\"w\"> </span><span class=\"nt\">O</span><span class=\"w\"> </span><span class=\"nt\">Risco</span><span class=\"w\"> </span><span class=\"nt\">Estrat\u00e9gico</span><span class=\"w\"> </span><span class=\"o\">(</span><span class=\"nt\">O</span><span class=\"w\"> </span><span class=\"s2\">&quot;Ponto Cego&quot;</span><span class=\"w\"> </span><span class=\"nt\">do</span><span class=\"w\"> </span><span class=\"nt\">Varejo</span><span class=\"o\">)</span>\n\n\n<span class=\"nt\">A</span><span class=\"w\"> </span><span class=\"nt\">Heineken</span><span class=\"w\"> </span><span class=\"nt\">n\u00e3o</span><span class=\"w\"> </span><span class=\"nt\">\u00e9</span><span class=\"w\"> </span><span class=\"nt\">um</span><span class=\"w\"> </span><span class=\"nt\">produto</span><span class=\"w\"> </span><span class=\"nt\">comum</span><span class=\"o\">;</span><span class=\"w\"> </span><span class=\"nt\">ela</span><span class=\"w\"> </span><span class=\"nt\">\u00e9</span><span class=\"w\"> </span><span class=\"nt\">um</span><span class=\"w\"> </span><span class=\"o\">**</span><span class=\"nt\">KVI</span><span class=\"w\"> </span><span class=\"o\">(</span><span class=\"nt\">Key</span><span class=\"w\"> </span><span class=\"nt\">Value</span><span class=\"w\"> </span><span class=\"nt\">Item</span><span class=\"w\"> </span><span class=\"nt\">-</span><span class=\"w\"> </span><span class=\"nt\">Item</span><span class=\"w\"> </span><span class=\"nt\">Not\u00e1vel</span><span class=\"o\">)**.</span><span class=\"w\"> </span><span class=\"nt\">Ela</span><span class=\"w\"> </span><span class=\"nt\">pertence</span><span class=\"w\"> </span><span class=\"nt\">\u00e0</span><span class=\"w\"> </span><span class=\"nt\">Curva</span><span class=\"w\"> </span><span class=\"nt\">A</span><span class=\"o\">+</span><span class=\"w\"> </span><span class=\"nt\">da</span><span class=\"w\"> </span><span class=\"nt\">loja</span><span class=\"w\"> </span><span class=\"nt\">e</span><span class=\"w\"> </span><span class=\"nt\">possui</span><span class=\"w\"> </span><span class=\"nt\">alt\u00edssima</span><span class=\"w\"> </span><span class=\"nt\">sensibilidade</span><span class=\"w\"> </span><span class=\"nt\">a</span><span class=\"w\"> </span><span class=\"nt\">pre\u00e7o</span><span class=\"o\">.</span><span class=\"w\"> </span><span class=\"nt\">O</span><span class=\"w\"> </span><span class=\"nt\">cliente</span><span class=\"w\"> </span><span class=\"nt\">tem</span><span class=\"w\"> </span><span class=\"nt\">o</span><span class=\"w\"> </span><span class=\"nt\">valor</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"nt\">R</span><span class=\"o\">$</span><span class=\"w\"> </span><span class=\"nt\">6</span><span class=\"o\">,</span><span class=\"nt\">50</span><span class=\"w\"> </span><span class=\"nt\">memorizado</span><span class=\"o\">.</span>\n\n<span class=\"nt\">O</span><span class=\"w\"> </span><span class=\"nt\">risco</span><span class=\"w\"> </span><span class=\"nt\">cr\u00edtico</span><span class=\"w\"> </span><span class=\"nt\">que</span><span class=\"w\"> </span><span class=\"nt\">este</span><span class=\"w\"> </span><span class=\"nt\">laborat\u00f3rio</span><span class=\"w\"> </span><span class=\"nt\">visa</span><span class=\"w\"> </span><span class=\"nt\">auditar</span><span class=\"w\"> </span><span class=\"nt\">\u00e9</span><span class=\"w\"> </span><span class=\"nt\">o</span><span class=\"w\"> </span><span class=\"nt\">conceito</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"o\">**</span><span class=\"nt\">Loss</span><span class=\"w\"> </span><span class=\"nt\">Leader</span><span class=\"w\"> </span><span class=\"o\">(</span><span class=\"nt\">Isca</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"nt\">Tr\u00e1fego</span><span class=\"o\">)**:</span>\n\n<span class=\"o\">*</span><span class=\"w\"> </span><span class=\"nt\">Se</span><span class=\"w\"> </span><span class=\"nt\">o</span><span class=\"w\"> </span><span class=\"nt\">cliente</span><span class=\"w\"> </span><span class=\"nt\">achar</span><span class=\"w\"> </span><span class=\"nt\">a</span><span class=\"w\"> </span><span class=\"nt\">cerveja</span><span class=\"w\"> </span><span class=\"nt\">cara</span><span class=\"o\">,</span><span class=\"w\"> </span><span class=\"nt\">ele</span><span class=\"w\"> </span><span class=\"nt\">ir\u00e1</span><span class=\"w\"> </span><span class=\"nt\">para</span><span class=\"w\"> </span><span class=\"nt\">o</span><span class=\"w\"> </span><span class=\"nt\">concorrente</span><span class=\"o\">.</span>\n\n<span class=\"o\">*</span><span class=\"w\"> </span><span class=\"nt\">Se</span><span class=\"w\"> </span><span class=\"nt\">ele</span><span class=\"w\"> </span><span class=\"nt\">for</span><span class=\"w\"> </span><span class=\"nt\">para</span><span class=\"w\"> </span><span class=\"nt\">o</span><span class=\"w\"> </span><span class=\"nt\">concorrente</span><span class=\"o\">,</span><span class=\"w\"> </span><span class=\"nt\">perderemos</span><span class=\"w\"> </span><span class=\"nt\">apenas</span><span class=\"w\"> </span><span class=\"nt\">os</span><span class=\"w\"> </span><span class=\"nt\">centavos</span><span class=\"w\"> </span><span class=\"nt\">da</span><span class=\"w\"> </span><span class=\"nt\">margem</span><span class=\"w\"> </span><span class=\"nt\">da</span><span class=\"w\"> </span><span class=\"nt\">cerveja</span><span class=\"o\">,</span><span class=\"w\"> </span><span class=\"nt\">ou</span><span class=\"w\"> </span><span class=\"nt\">perderemos</span><span class=\"w\"> </span><span class=\"nt\">o</span><span class=\"w\"> </span><span class=\"o\">**</span><span class=\"nt\">lucro</span><span class=\"w\"> </span><span class=\"nt\">inteiro</span><span class=\"w\"> </span><span class=\"nt\">do</span><span class=\"w\"> </span><span class=\"nt\">A\u00e7ougue</span><span class=\"o\">**</span><span class=\"w\"> </span><span class=\"o\">(</span><span class=\"nt\">Picanha</span><span class=\"o\">,</span><span class=\"w\"> </span><span class=\"nt\">Carv\u00e3o</span><span class=\"w\"> </span><span class=\"nt\">e</span><span class=\"w\"> </span><span class=\"nt\">Gelo</span><span class=\"o\">)</span><span class=\"w\"> </span><span class=\"nt\">que</span><span class=\"w\"> </span><span class=\"nt\">ele</span><span class=\"w\"> </span><span class=\"nt\">compraria</span><span class=\"w\"> </span><span class=\"nt\">junto</span><span class=\"o\">?</span>\n\n<span class=\"err\">##</span><span class=\"w\"> </span><span class=\"nt\">3</span><span class=\"o\">.</span><span class=\"w\"> </span><span class=\"nt\">O</span><span class=\"w\"> </span><span class=\"nt\">Objetivo</span><span class=\"w\"> </span><span class=\"nt\">da</span><span class=\"w\"> </span><span class=\"nt\">Auditoria</span><span class=\"w\"> </span><span class=\"o\">(</span><span class=\"nt\">Crit\u00e9rio</span><span class=\"w\"> </span><span class=\"nt\">SMART</span><span class=\"o\">)</span>\n<span class=\"nt\">Em</span><span class=\"w\"> </span><span class=\"nt\">vez</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"nt\">tomar</span><span class=\"w\"> </span><span class=\"nt\">decis\u00f5es</span><span class=\"w\"> </span><span class=\"nt\">baseadas</span><span class=\"w\"> </span><span class=\"nt\">na</span><span class=\"w\"> </span><span class=\"nt\">intui\u00e7\u00e3o</span><span class=\"w\"> </span><span class=\"o\">(</span><span class=\"nt\">feeling</span><span class=\"o\">)</span><span class=\"w\"> </span><span class=\"nt\">do</span><span class=\"w\"> </span><span class=\"nt\">comprador</span><span class=\"o\">,</span><span class=\"w\"> </span><span class=\"nt\">este</span><span class=\"w\"> </span><span class=\"nt\">laborat\u00f3rio</span><span class=\"w\"> </span><span class=\"nt\">utiliza</span><span class=\"w\"> </span><span class=\"nt\">Engenharia</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"nt\">Dados</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"nt\">alta</span><span class=\"w\"> </span><span class=\"nt\">performance</span><span class=\"w\"> </span><span class=\"o\">(**</span><span class=\"nt\">Polars</span><span class=\"o\">**)</span><span class=\"w\"> </span><span class=\"nt\">e</span><span class=\"w\"> </span><span class=\"nt\">Machine</span><span class=\"w\"> </span><span class=\"nt\">Learning</span><span class=\"w\"> </span><span class=\"o\">(**</span><span class=\"nt\">Regress\u00e3o</span><span class=\"w\"> </span><span class=\"nt\">Linear</span><span class=\"o\">**)</span><span class=\"w\"> </span><span class=\"nt\">para</span><span class=\"o\">:</span>\n\n<span class=\"nt\">1</span><span class=\"o\">.</span><span class=\"w\"> </span><span class=\"nt\">Simular</span><span class=\"w\"> </span><span class=\"nt\">o</span><span class=\"w\"> </span><span class=\"nt\">impacto</span><span class=\"w\"> </span><span class=\"nt\">financeiro</span><span class=\"w\"> </span><span class=\"nt\">real</span><span class=\"w\"> </span><span class=\"nt\">do</span><span class=\"w\"> </span><span class=\"nt\">aumento</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"nt\">pre\u00e7o</span><span class=\"w\"> </span><span class=\"nt\">no</span><span class=\"w\"> </span><span class=\"nt\">caixa</span><span class=\"w\"> </span><span class=\"nt\">di\u00e1rio</span><span class=\"o\">.</span>\n\n<span class=\"nt\">2</span><span class=\"o\">.</span><span class=\"w\"> </span><span class=\"nt\">Realizar</span><span class=\"w\"> </span><span class=\"nt\">uma</span><span class=\"w\"> </span><span class=\"o\">**</span><span class=\"nt\">An\u00e1lise</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"nt\">Cesta</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"nt\">Compras</span><span class=\"w\"> </span><span class=\"o\">(</span><span class=\"nt\">Market</span><span class=\"w\"> </span><span class=\"nt\">Basket</span><span class=\"w\"> </span><span class=\"nt\">Analysis</span><span class=\"o\">)**</span><span class=\"w\"> </span><span class=\"nt\">para</span><span class=\"w\"> </span><span class=\"nt\">medir</span><span class=\"w\"> </span><span class=\"nt\">a</span><span class=\"w\"> </span><span class=\"nt\">Taxa</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"nt\">Anexo</span><span class=\"w\"> </span><span class=\"o\">(</span><span class=\"nt\">Attach</span><span class=\"w\"> </span><span class=\"nt\">Rate</span><span class=\"o\">)</span><span class=\"w\"> </span><span class=\"nt\">da</span><span class=\"w\"> </span><span class=\"nt\">cerveja</span><span class=\"w\"> </span><span class=\"nt\">com</span><span class=\"w\"> </span><span class=\"nt\">produtos</span><span class=\"w\"> </span><span class=\"nt\">perec\u00edveis</span><span class=\"o\">.</span>\n\n<span class=\"nt\">3</span><span class=\"o\">.</span><span class=\"w\"> </span><span class=\"nt\">Calcular</span><span class=\"w\"> </span><span class=\"nt\">a</span><span class=\"w\"> </span><span class=\"o\">**</span><span class=\"nt\">Elasticidade</span><span class=\"w\"> </span><span class=\"nt\">Cruzada</span><span class=\"o\">**,</span><span class=\"w\"> </span><span class=\"nt\">provando</span><span class=\"w\"> </span><span class=\"nt\">matematicamente</span><span class=\"w\"> </span><span class=\"nt\">quantos</span><span class=\"w\"> </span><span class=\"nt\">reais</span><span class=\"w\"> </span><span class=\"nt\">o</span><span class=\"w\"> </span><span class=\"nt\">A\u00e7ougue</span><span class=\"w\"> </span><span class=\"nt\">perde</span><span class=\"w\"> </span><span class=\"nt\">a</span><span class=\"w\"> </span><span class=\"nt\">cada</span><span class=\"w\"> </span><span class=\"nt\">R</span><span class=\"o\">$</span><span class=\"w\"> </span><span class=\"nt\">1</span><span class=\"o\">,</span><span class=\"nt\">00</span><span class=\"w\"> </span><span class=\"nt\">que</span><span class=\"w\"> </span><span class=\"nt\">a</span><span class=\"w\"> </span><span class=\"nt\">Bebida</span><span class=\"w\"> </span><span class=\"nt\">sobe</span><span class=\"o\">.</span>\n\n<span class=\"nt\">A</span><span class=\"w\"> </span><span class=\"nt\">seguir</span><span class=\"o\">,</span><span class=\"w\"> </span><span class=\"nt\">o</span><span class=\"w\"> </span><span class=\"nt\">detalhamento</span><span class=\"w\"> </span><span class=\"nt\">t\u00e9cnico</span><span class=\"o\">,</span><span class=\"w\"> </span><span class=\"nt\">o</span><span class=\"w\"> </span><span class=\"nt\">processamento</span><span class=\"w\"> </span><span class=\"nt\">dos</span><span class=\"w\"> </span><span class=\"nt\">logs</span><span class=\"w\"> </span><span class=\"nt\">de</span><span class=\"w\"> </span><span class=\"nt\">PDV</span><span class=\"w\"> </span><span class=\"nt\">e</span><span class=\"w\"> </span><span class=\"nt\">a</span><span class=\"w\"> </span><span class=\"nt\">decis\u00e3o</span><span class=\"w\"> </span><span class=\"nt\">executiva</span><span class=\"w\"> </span><span class=\"nt\">final</span><span class=\"w\"> </span><span class=\"nt\">para</span><span class=\"w\"> </span><span class=\"nt\">a</span><span class=\"w\"> </span><span class=\"nt\">opera\u00e7\u00e3o</span><span class=\"o\">.</span>\n</code></pre></div></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hbol",
+      "code_hash": "6ed9cef390697104b6988d6ddde1ff09",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "44f0d310ce48d8dc969b2813d05090b9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"quinzena-1-preco-a-r-650\">Quinzena 1: Pre\u00e7o a R$ 6.50</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "e109721b648fde7d922d256aee4beb53",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "d48f8e2841adef6eb4cebaa9a847f6c2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"quinzena-2-preco-a-r-720-repasse-de-aumento\">Quinzena 2: Pre\u00e7o a R$ 7.20 (Repasse de aumento)</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "91bbe0fb307ca070c3a526824052d8ad",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "b0bd4967b156ebbc59077996f2a0e551",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "ca2d44e5766b284f58a587152f2ae518",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "1be4438ecdd7fc1248dc0ee5299f108f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"governanca-de-dados-concluida\">\ud83d\udd12 Governan\u00e7a de Dados Conclu\u00edda</h3>\n<span class=\"paragraph\">O arquivo f\u00edsico de auditoria foi gerado e salvo com sucesso no cofre: <code>{arquivo_csv}</code>.\n    A nossa base bruta de opera\u00e7\u00f5es agora est\u00e1 protegida e pronta para a modelagem financeira.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "ddf9f929771b9eb07689521b4cd28874",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"extracao\">Extra\u00e7\u00e3o</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "c616056476da767d6778a316335fcd32",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='RGSE-0' random-id='0a12f400-bcf2-5cb0-2e1e-0be6bc68b55c'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:127},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:117},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:129},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:142},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:116},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:116},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:143},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:131},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:112},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:128}]&quot;' data-total-rows='30' data-total-columns='3' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;Preco_Venda_R&#36;&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;Custo_Unitario_R&#36;&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;Volume_Vendido&quot;,[&quot;integer&quot;,&quot;i64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false' data-download-file-name='&quot;df&quot;'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "c46ae1fff9e204966f96b8bdfb2ebb2d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"transformacao\">Transforma\u00e7\u00e3o</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "2b78ed6b6905e11832167d7dca4af49a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='emfo-0' random-id='fc046cb4-c878-f4d2-0bee-4feec1d28b57'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:127,&#92;&quot;Faturamento_R&#36;&#92;&quot;:825.5,&#92;&quot;Custo_Total_R&#36;&#92;&quot;:698.5,&#92;&quot;Lucro_Bruto_R&#36;&#92;&quot;:127.0},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:117,&#92;&quot;Faturamento_R&#36;&#92;&quot;:760.5,&#92;&quot;Custo_Total_R&#36;&#92;&quot;:643.5,&#92;&quot;Lucro_Bruto_R&#36;&#92;&quot;:117.0},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:129,&#92;&quot;Faturamento_R&#36;&#92;&quot;:838.5,&#92;&quot;Custo_Total_R&#36;&#92;&quot;:709.5,&#92;&quot;Lucro_Bruto_R&#36;&#92;&quot;:129.0},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:142,&#92;&quot;Faturamento_R&#36;&#92;&quot;:923.0,&#92;&quot;Custo_Total_R&#36;&#92;&quot;:781.0,&#92;&quot;Lucro_Bruto_R&#36;&#92;&quot;:142.0},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:116,&#92;&quot;Faturamento_R&#36;&#92;&quot;:754.0,&#92;&quot;Custo_Total_R&#36;&#92;&quot;:638.0,&#92;&quot;Lucro_Bruto_R&#36;&#92;&quot;:116.0},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:116,&#92;&quot;Faturamento_R&#36;&#92;&quot;:754.0,&#92;&quot;Custo_Total_R&#36;&#92;&quot;:638.0,&#92;&quot;Lucro_Bruto_R&#36;&#92;&quot;:116.0},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:143,&#92;&quot;Faturamento_R&#36;&#92;&quot;:929.5,&#92;&quot;Custo_Total_R&#36;&#92;&quot;:786.5,&#92;&quot;Lucro_Bruto_R&#36;&#92;&quot;:143.0},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:131,&#92;&quot;Faturamento_R&#36;&#92;&quot;:851.5,&#92;&quot;Custo_Total_R&#36;&#92;&quot;:720.5,&#92;&quot;Lucro_Bruto_R&#36;&#92;&quot;:131.0},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:112,&#92;&quot;Faturamento_R&#36;&#92;&quot;:728.0,&#92;&quot;Custo_Total_R&#36;&#92;&quot;:616.0,&#92;&quot;Lucro_Bruto_R&#36;&#92;&quot;:112.0},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Custo_Unitario_R&#36;&#92;&quot;:5.5,&#92;&quot;Volume_Vendido&#92;&quot;:128,&#92;&quot;Faturamento_R&#36;&#92;&quot;:832.0,&#92;&quot;Custo_Total_R&#36;&#92;&quot;:704.0,&#92;&quot;Lucro_Bruto_R&#36;&#92;&quot;:128.0}]&quot;' data-total-rows='30' data-total-columns='6' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;Preco_Venda_R&#36;&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;Custo_Unitario_R&#36;&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;Volume_Vendido&quot;,[&quot;integer&quot;,&quot;i64&quot;]],[&quot;Faturamento_R&#36;&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;Custo_Total_R&#36;&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;Lucro_Bruto_R&#36;&quot;,[&quot;number&quot;,&quot;f64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false' data-download-file-name='&quot;df&quot;'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "1077178fa355e893ce8c41e62202863f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"modegem\">Modegem</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "09c7fa2ae330ee944eb70df70b29877d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='nWHF-0' random-id='a254725f-9779-ed3a-9feb-4cc2d6b603e1'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:6.5,&#92;&quot;Total_Garrafas_Vendidas&#92;&quot;:1795,&#92;&quot;Faturamento_Total_R&#36;&#92;&quot;:11667.5,&#92;&quot;Lucro_Bruto_Total_R&#36;&#92;&quot;:1795.0},{&#92;&quot;Preco_Venda_R&#36;&#92;&quot;:7.2,&#92;&quot;Total_Garrafas_Vendidas&#92;&quot;:1048,&#92;&quot;Faturamento_Total_R&#36;&#92;&quot;:7545.6,&#92;&quot;Lucro_Bruto_Total_R&#36;&#92;&quot;:1781.6}]&quot;' data-total-rows='2' data-total-columns='4' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;Preco_Venda_R&#36;&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;Total_Garrafas_Vendidas&quot;,[&quot;integer&quot;,&quot;i64&quot;]],[&quot;Faturamento_Total_R&#36;&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;Lucro_Bruto_Total_R&#36;&quot;,[&quot;number&quot;,&quot;f64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false' data-download-file-name='&quot;df&quot;'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "1842250a932fe9d3e89dd20172cfd7e2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"considerando-que-o-fabricante-elevou-o-preco-a-550\">Considerando que o fabricante elevou o pre\u00e7o a 5.50</h3>\n<ul>\n<li>cenario 1 = 6.50</li>\n<li>cenario 2 - 7.20</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "0b44cfb8f76fe674284d283e429e674d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>1795.0</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "7e199238b8dc634ac40b7aa7dbebe46a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>3027.7000000000003</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "7cf5c9848d173f43a7564dcefa7c0009",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='qnkX-0' random-id='b9562758-e621-96b4-3c89-60498cfee56f'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;Cupom_ID&#92;&quot;:1,&#92;&quot;Produto&#92;&quot;:&#92;&quot;Pao Frances 1KG&#92;&quot;,&#92;&quot;Lucro_R&#36;&#92;&quot;:2.5},{&#92;&quot;Cupom_ID&#92;&quot;:1,&#92;&quot;Produto&#92;&quot;:&#92;&quot;Heineken LN 330ml&#92;&quot;,&#92;&quot;Lucro_R&#36;&#92;&quot;:1.0},{&#92;&quot;Cupom_ID&#92;&quot;:1,&#92;&quot;Produto&#92;&quot;:&#92;&quot;Picanha Maturada a V&#92;&#92;u00e1cuo&#92;&quot;,&#92;&quot;Lucro_R&#36;&#92;&quot;:25.0},{&#92;&quot;Cupom_ID&#92;&quot;:1,&#92;&quot;Produto&#92;&quot;:&#92;&quot;Carvao Eucalipto 3KG&#92;&quot;,&#92;&quot;Lucro_R&#36;&#92;&quot;:8.5},{&#92;&quot;Cupom_ID&#92;&quot;:1,&#92;&quot;Produto&#92;&quot;:&#92;&quot;Gelo Filtrado 5KG&#92;&quot;,&#92;&quot;Lucro_R&#36;&#92;&quot;:4.0},{&#92;&quot;Cupom_ID&#92;&quot;:2,&#92;&quot;Produto&#92;&quot;:&#92;&quot;Pao Frances 1KG&#92;&quot;,&#92;&quot;Lucro_R&#36;&#92;&quot;:2.5},{&#92;&quot;Cupom_ID&#92;&quot;:2,&#92;&quot;Produto&#92;&quot;:&#92;&quot;Heineken LN 330ml&#92;&quot;,&#92;&quot;Lucro_R&#36;&#92;&quot;:1.0},{&#92;&quot;Cupom_ID&#92;&quot;:2,&#92;&quot;Produto&#92;&quot;:&#92;&quot;Picanha Maturada a V&#92;&#92;u00e1cuo&#92;&quot;,&#92;&quot;Lucro_R&#36;&#92;&quot;:25.0},{&#92;&quot;Cupom_ID&#92;&quot;:2,&#92;&quot;Produto&#92;&quot;:&#92;&quot;Carvao Eucalipto 3KG&#92;&quot;,&#92;&quot;Lucro_R&#36;&#92;&quot;:8.5},{&#92;&quot;Cupom_ID&#92;&quot;:2,&#92;&quot;Produto&#92;&quot;:&#92;&quot;Gelo Filtrado 5KG&#92;&quot;,&#92;&quot;Lucro_R&#36;&#92;&quot;:4.0}]&quot;' data-total-rows='9602' data-total-columns='3' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;Cupom_ID&quot;,[&quot;integer&quot;,&quot;i64&quot;]],[&quot;Produto&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;Lucro_R&#36;&quot;,[&quot;number&quot;,&quot;f64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false' data-download-file-name='&quot;df&quot;'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "2dd7cfb288b4c1ab47df1ef40a4b7fd6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='TqIu-0' random-id='c3a908a5-009a-e33e-763c-29bb76fbce2e'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;Produto&#92;&quot;:&#92;&quot;Picanha Maturada a V&#92;&#92;u00e1cuo&#92;&quot;,&#92;&quot;Vezes_Comprado_Junto&#92;&quot;:1034,&#92;&quot;Lucro_Indireto_Gerado_R&#36;&#92;&quot;:25850.0},{&#92;&quot;Produto&#92;&quot;:&#92;&quot;Carvao Eucalipto 3KG&#92;&quot;,&#92;&quot;Vezes_Comprado_Junto&#92;&quot;:1034,&#92;&quot;Lucro_Indireto_Gerado_R&#36;&#92;&quot;:8789.0},{&#92;&quot;Produto&#92;&quot;:&#92;&quot;Gelo Filtrado 5KG&#92;&quot;,&#92;&quot;Vezes_Comprado_Junto&#92;&quot;:1034,&#92;&quot;Lucro_Indireto_Gerado_R&#36;&#92;&quot;:4136.0},{&#92;&quot;Produto&#92;&quot;:&#92;&quot;Pao Frances 1KG&#92;&quot;,&#92;&quot;Vezes_Comprado_Junto&#92;&quot;:1500,&#92;&quot;Lucro_Indireto_Gerado_R&#36;&#92;&quot;:3750.0}]&quot;' data-total-rows='4' data-total-columns='3' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;Produto&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;Vezes_Comprado_Junto&quot;,[&quot;integer&quot;,&quot;u32&quot;]],[&quot;Lucro_Indireto_Gerado_R&#36;&quot;,[&quot;number&quot;,&quot;f64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false' data-download-file-name='&quot;df&quot;'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "ad3636bc5bea3ff5e93f8034d54fe8f5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<div style='display: flex;flex: 1;flex-direction: column;justify-content: flex-start;align-items: normal;flex-wrap: nowrap;gap: 0.5rem'><span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"ia-de-pricing-regressao-linear-de-elasticidade-cruzada\">\ud83e\udd16 IA de Pricing: Regress\u00e3o Linear de Elasticidade Cruzada</h3>\n<span class=\"paragraph\">O modelo de Machine Learning analisou 60 dias de hist\u00f3rico e encontrou a correla\u00e7\u00e3o matem\u00e1tica exata entre o pre\u00e7o da cerveja e a venda da carne.</span>\n<span class=\"paragraph\"><strong>Resultados da Proje\u00e7\u00e3o Di\u00e1ria:</strong></span></span><marimo-ui-element object-id='Vxnm-0' random-id='2811af50-7435-232c-e5ad-a2d4b1bfc0f1'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;Cenario_Preco_Heineken_R&#36;&#92;&quot;:6.5,&#92;&quot;Previsao_Venda_Picanha_Qtd&#92;&quot;:71,&#92;&quot;Lucro_Projetado_Picanha_R&#36;&#92;&quot;:1775.0},{&#92;&quot;Cenario_Preco_Heineken_R&#36;&#92;&quot;:7.2,&#92;&quot;Previsao_Venda_Picanha_Qtd&#92;&quot;:62,&#92;&quot;Lucro_Projetado_Picanha_R&#36;&#92;&quot;:1550.0}]&quot;' data-total-rows='2' data-total-columns='3' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;Cenario_Preco_Heineken_R&#36;&quot;,[&quot;number&quot;,&quot;f64&quot;]],[&quot;Previsao_Venda_Picanha_Qtd&quot;,[&quot;integer&quot;,&quot;i64&quot;]],[&quot;Lucro_Projetado_Picanha_R&#36;&quot;,[&quot;number&quot;,&quot;f64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false' data-download-file-name='&quot;df&quot;'></marimo-table></marimo-ui-element><span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">\ud83d\udea8 <strong>ALERTA DE ROMBO NO A\u00c7OUGUE:</strong> A Regress\u00e3o Linear prova que, ao subirmos a Heineken para R$ 7.20, n\u00f3s perderemos <strong>R$ 225.00 por dia</strong> APENAS no lucro da Picanha. Isso destr\u00f3i qualquer ganho de centavos que ter\u00edamos na margem da cerveja.</span></span></div>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MdAc",
+      "code_hash": "194ea5d9e1ac25b333216c6c0a0dac11",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><ul>\n<li>O Cen\u00e1rio 1 (A Isca Funcionando - Pre\u00e7o a R$ 6,50): A Intelig\u00eancia Artificial previu que, com a cerveja barata atraindo clientes, venderemos 71 pe\u00e7as de picanha naquele dia.C\u00e1lculo Financeiro: 71 carnes <marimo-tex class=\"arithmatex\">||(\\times||)</marimo-tex> R$ 25,00 = R$ 1.775,00 de lucro no A\u00e7ougue.</li>\n<li>O Cen\u00e1rio 2 (A Isca Quebrada - Pre\u00e7o a R$ 7,20):A IA previu que o cliente achou a cerveja cara e foi para a concorr\u00eancia. Com isso, a venda da picanha despenca para apenas 62 pe\u00e7as.C\u00e1lculo Financeiro: 62 carnes <marimo-tex class=\"arithmatex\">||(\\times||)</marimo-tex> R$ 25,00 = R$ 1.550,00 de lucro no A\u00e7ougue.O Veredito Final (A Diferen\u00e7a):R$ 1.775,00 (Cen\u00e1rio Bom) - R$ 1.550,00 (Cen\u00e1rio Ruim) = R$ 225,00.</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ECWi",
+      "code_hash": "dc92b8b1850fbbfad7f486f9f98dd2d7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"senhores-diretores-ao-tentarmos-proteger-alguns-centavos-de-margem-na-cerveja-subindo-o-preco-para-r-720-nos-causamos-uma-fuga-de-fluxo-na-loja-essa-fuga-nos-fez-deixar-de-vender-9-pecas-de-picanha-por-dia-de-71-caiu-para-62-como-a-picanha-e-o-nosso-ouro-perder-essas-9-vendas-significa-tirar-r-22500-de-dinheiro-vivo-do-nosso-caixa-diario-a-cerveja-deve-continuar-a-r-650-para-proteger-o-lucro-do-acougue\">\"Senhores diretores, ao tentarmos proteger alguns centavos de margem na cerveja subindo o pre\u00e7o para R$ 7,20, n\u00f3s causamos uma fuga de fluxo na loja. Essa fuga nos fez deixar de vender 9 pe\u00e7as de Picanha por dia (de 71 caiu para 62). Como a picanha \u00e9 o nosso \"Ouro\", perder essas 9 vendas significa tirar R$ 225,00 de dinheiro vivo do nosso caixa di\u00e1rio. A cerveja deve continuar a R$ 6,50 para proteger o lucro do A\u00e7ougue.\"</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "OskY",
+      "code_hash": "9140d8c9df85867d86c945fbb8280219",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"dossie-tecnico-e-executivo-otimizacao-de-pricing-kvi-heineken-ln\">\ud83d\udcd1 Dossi\u00ea T\u00e9cnico e Executivo: Otimiza\u00e7\u00e3o de Pricing KVI (Heineken LN)</h1>\n<span class=\"paragraph\"><strong>\u00c1rea:</strong> Intelig\u00eancia Comercial &amp; Data Science\n<strong>Stack Tecnol\u00f3gica:</strong> Python, Polars, Scikit-Learn, Marimo, UV (Cookiecutter)</span>\n<hr />\n<h2 id=\"1-entendimento-do-negocio-a-dor\">1. Entendimento do Neg\u00f3cio (A Dor)</h2>\n<span class=\"paragraph\">A ind\u00fastria repassou um aumento de custo de R$ 5,00 para R$ 5,50 no produto Curva A+ (Heineken LN 330ml). O instinto inicial da opera\u00e7\u00e3o foi repassar o custo ao cliente (R$ 7,20) para proteger a margem percentual. O objetivo deste projeto foi validar matematicamente qual pre\u00e7o (R$ 6,50 ou R$ 7,20) maximiza o Lucro Bruto Absoluto da loja.</span>\n<h2 id=\"2-arquitetura-e-engenharia-de-dados-etl\">2. Arquitetura e Engenharia de Dados (ETL)</h2>\n<span class=\"paragraph\">O projeto foi estruturado sob rigorosa governan\u00e7a de dados:</span>\n<ul>\n<li><strong>Funda\u00e7\u00e3o:</strong> Utiliza\u00e7\u00e3o do <em>Cookiecutter Data Science</em> com gerenciador <code>uv</code> para isolamento de depend\u00eancias, prevenindo d\u00edvida t\u00e9cnica.</li>\n<li><strong>Extra\u00e7\u00e3o e Cofre:</strong> Gera\u00e7\u00e3o de um simulador de PDV (<code>np.random.normal</code>) para 30 dias de opera\u00e7\u00e3o, com a trava de aleatoriedade (<code>seed=42</code>) para garantir 100% de reprodutibilidade em auditorias. O arquivo bruto foi isolado fisicamente em <code>data/raw/pdv_heineken_30dias.csv</code>.</li>\n</ul>\n<h3 id=\"trincheiras-do-codigo-licoes-aprendidas-na-operacao\">\ud83d\udea7 Trincheiras do C\u00f3digo (Li\u00e7\u00f5es Aprendidas na Opera\u00e7\u00e3o):</h3>\n<span class=\"paragraph\">Durante a engenharia de dados, enfrentamos e superamos atritos reais de integra\u00e7\u00e3o de sistemas:</span>\n<ol>\n<li><strong>Sintaxe de M\u00f3dulos:</strong> O erro <code>TypeError: 'module' object is not callable</code> ao tentar usar <code>np.random(42)</code>. A corre\u00e7\u00e3o refor\u00e7ou o uso correto dos m\u00e9todos internos (<code>np.random.seed(42)</code>).</li>\n<li><strong>Tipagem de Dados em Python:</strong> A compreens\u00e3o de que a sintaxe <code>[6.50] * 15</code> em Python n\u00e3o representa um c\u00e1lculo de margem percentual, mas sim a replica\u00e7\u00e3o de uma vari\u00e1vel em lista ao longo de 15 dias para simular a etiqueta de pre\u00e7o est\u00e1tica na g\u00f4ndola.</li>\n<li><strong>Case Sensitivity e Governan\u00e7a:</strong> O colapso do <code>pl.concat</code> (ShapeError) devido a uma diverg\u00eancia de capitaliza\u00e7\u00e3o (<code>Preco_Venda_R$</code> vs <code>Preco_venda_R$</code>). O rigor do <strong>Polars</strong> bloqueou a concatena\u00e7\u00e3o, prevenindo que um dado sujo corrompesse o c\u00e1lculo final. </li>\n</ol>\n<h2 id=\"3-modelagem-analitica-e-a-visao-estrategica\">3. Modelagem Anal\u00edtica e a Vis\u00e3o Estrat\u00e9gica</h2>\n<span class=\"paragraph\">O primeiro cruzamento de dados revelou que o aumento para R$ 7,20, avaliando o produto de forma isolada, traria maior lucro por unidade devido \u00e0 queda de custo de reposi\u00e7\u00e3o. </span>\n<span class=\"paragraph\"><strong>O Ponto de Virada (Market Basket Analysis):</strong>\nA an\u00e1lise n\u00e3o parou na margem do item. Foi levantada a hip\u00f3tese de comportamento de compra cruzada. Ao analisarmos o <em>Attach Rate</em> (Taxa de Anexo), os dados provaram que a Heineken \u00e9 um produto <strong>KVI (Isca de Tr\u00e1fego)</strong>. Clientes que compram a cerveja a R$ 6,50 t\u00eam alta probabilidade de ancorar produtos de alta margem no carrinho, especificamente itens de churrasco.</span>\n<h2 id=\"4-inteligencia-artificial-e-veredito-o-risco-de-r-225dia\">4. Intelig\u00eancia Artificial e Veredito (O Risco de R$ 225/dia)</h2>\n<span class=\"paragraph\">Para quantificar o risco de ruptura de fluxo, implantamos um modelo preditivo de <strong>Regress\u00e3o Linear</strong> (<code>scikit-learn</code>) focado em Elasticidade Cruzada da Demanda.</span>\n<span class=\"paragraph\"><strong>A Matem\u00e1tica do Ch\u00e3o de Loja:</strong></span>\n<ul>\n<li>A IA provou que a cada aumento no pre\u00e7o da cerveja, perdemos volume de Picanha.</li>\n<li>Cen\u00e1rio A (Cerveja a R$ 6,50): Previs\u00e3o de venda de 71 pe\u00e7as de Picanha (Lucro: R$ 1.775,00).</li>\n<li>Cen\u00e1rio B (Cerveja a R$ 7,20): Fuga de clientes derruba a venda para 62 pe\u00e7as (Lucro: R$ 1.550,00).</li>\n<li><strong>O Rombo:</strong> A diferen\u00e7a entre os cen\u00e1rios resultou em uma perda projetada de exatos <strong>R$ 225,00 di\u00e1rios</strong> (9 pe\u00e7as n\u00e3o vendidas x R$ 25,00 de lucro limpo por pe\u00e7a).</li>\n</ul>\n<h3 id=\"a-ordem-executiva\">\ud83c\udfaf A Ordem Executiva</h3>\n<span class=\"paragraph\"><strong>A etiqueta da Heineken LN deve ser mantida a R$ 6,50.</strong> O varejo n\u00e3o vive de margem percentual de cerveja; vive de Lucro Bruto Absoluto de carrinho. A estrat\u00e9gia de <em>Loss Leader</em> absorve o custo da ind\u00fastria para proteger as centenas de reais geradas diariamente pelo a\u00e7ougue.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}
