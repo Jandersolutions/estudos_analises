@@ -1,0 +1,26 @@
+project:
+  type: website
+  output-dir: ../docs  # Isso joga o site pronto para a raiz, onde o GitHub lê
+
+website:
+  title: "Jandersolutions | Data Science"
+  description: "Análises estratégicas de varejo, inteligência de negócios e IA."
+  site-url: https://jandersolutions.github.io/estudos_analises/
+  navbar:
+    background: "#1a1a1a"
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+    right:
+      - icon: github
+        href: https://github.com/Jandersolutions
+      - icon: linkedin
+        href: https://www.linkedin.com/in/janderson-batista-abreu/
+
+format:
+  html:
+    theme: cosmo
+    code-fold: true
+    toc: true
+    lang: pt-br
