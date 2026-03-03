@@ -1,0 +1,37 @@
+---
+title: "Otimização de Pricing no Varejo: Elasticidade Cruzada com Polars e Python"
+subtitle: "Análise Estratégica: O impacto do preço da Heineken 330ml na categoria de Cervejas Premium."
+author: "Janderson Batista Abreu"
+date: "2026-03-03"
+categories: [Varejo, Pricing, Python, Polars, Ciência de Dados]
+image: "image.jpg" # Salve uma imagem de cerveja ou gráfico nesta pasta se desejar
+---
+
+## O Desafio de Negócio no Varejo de Autosserviço
+
+No cenário competitivo do varejo e atacado brasileiro, o **Pricing** não é apenas uma questão de margem sobre o custo (markup). É uma guerra de percepção de valor. A Heineken 330ml (Long Neck) é frequentemente utilizada como um **Produto Gerador de Tráfego (KVI - Known Value Item)**. 
+
+Se o preço sobe 5%, o cliente não apenas deixa de comprar a Heineken; ele pode mudar de loja para fazer toda a sua compra do mês. Como analista e engenheiro de dados, meu papel é quantificar esse risco através da **Elasticidade-Preço da Demanda**.
+
+## A Stack Tecnológica: Por que Polars?
+
+Nesta análise, utilizei a biblioteca **Polars** em Python. No contexto de engenharia de dados moderna, o Polars supera o Pandas em performance (multi-threading) e eficiência de memória, sendo ideal para processar grandes volumes de cupons fiscais (POS Data).
+
+```python
+import polars as pl
+import numpy as np
+
+# Simulando dados de venda com variação de preço
+data = pl.DataFrame({
+    "semana": range(1, 11),
+    "preco_heineken": [5.99, 5.99, 6.49, 6.49, 5.79, 5.79, 6.99, 6.99, 5.49, 5.49],
+    "vendas_unidades": [1200, 1150, 800, 780, 1500, 1450, 400, 380, 1800, 1750]
+})
+
+# Calculando a Elasticidade Log-Log (Rápida e Eficiente)
+data = data.with_columns([
+    pl.col("preco_heineken").log().alias("log_p"),
+    pl.col("vendas_unidades").log().alias("log_q")
+])
+
+print(data.head())

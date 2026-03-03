@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Janderson Batista Abreu">
 
-<title>blog – Jandersolutions | Data Science</title>
+<title>Otimização de Pricing no Varejo: Elasticidade Cruzada com Polars e Python – Jandersolutions | Data Science</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +24,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b60b7f6c97b7269f2201949570269bb1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-b60b7f6c97b7269f2201949570269bb1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,67 +69,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Procurar"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="alternate" type="application/rss+xml" title="Jandersolutions | Data Science" href="index.xml" data-external="1"></head>
+</head>
 
 <body class="nav-fixed quarto-light">
 
@@ -139,9 +80,9 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Jandersolutions | Data Science</span>
     </a>
   </div>
@@ -152,11 +93,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">Janderson Batista Abreu</span></a>
   </li>  
 </ul>
@@ -181,83 +122,85 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">blog</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Otimização de Pricing no Varejo: Elasticidade Cruzada com Polars e Python</h1>
+            <p class="subtitle lead">Análise Estratégica: O impacto do preço da Heineken 330ml na categoria de Cervejas Premium.</p>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Varejo</div>
+                <div class="quarto-category">Pricing</div>
+                <div class="quarto-category">Python</div>
+                <div class="quarto-category">Polars</div>
+                <div class="quarto-category">Ciência de Dados</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Autor</div>
+      <div class="quarto-title-meta-contents">
+               <p>Janderson Batista Abreu </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Data de Publicação</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">3 de março de 2026</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categorias</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">Tudo <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2klQzMlQUFuY2lhJTIwZGUlMjBEYWRvcw==">Ciência de Dados <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UG9sYXJz">Polars <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJpY2luZw==">Pricing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VmFyZWpv">Varejo <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
+   
+  <ul>
+  <li><a href="#o-desafio-de-negócio-no-varejo-de-autosserviço" id="toc-o-desafio-de-negócio-no-varejo-de-autosserviço" class="nav-link active" data-scroll-target="#o-desafio-de-negócio-no-varejo-de-autosserviço">O Desafio de Negócio no Varejo de Autosserviço</a></li>
+  <li><a href="#a-stack-tecnológica-por-que-polars" id="toc-a-stack-tecnológica-por-que-polars" class="nav-link" data-scroll-target="#a-stack-tecnológica-por-que-polars">A Stack Tecnológica: Por que Polars?</a></li>
+  <li><a href="#simulando-dados-de-venda-com-variação-de-preço" id="toc-simulando-dados-de-venda-com-variação-de-preço" class="nav-link" data-scroll-target="#simulando-dados-de-venda-com-variação-de-preço">Simulando dados de venda com variação de preço</a></li>
+  <li><a href="#calculando-a-elasticidade-log-log-rápida-e-eficiente" id="toc-calculando-a-elasticidade-log-log-rápida-e-eficiente" class="nav-link" data-scroll-target="#calculando-a-elasticidade-log-log-rápida-e-eficiente">Calculando a Elasticidade Log-Log (Rápida e Eficiente)</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<section id="o-desafio-de-negócio-no-varejo-de-autosserviço" class="level2">
+<h2 class="anchored" data-anchor-id="o-desafio-de-negócio-no-varejo-de-autosserviço">O Desafio de Negócio no Varejo de Autosserviço</h2>
+<p>No cenário competitivo do varejo e atacado brasileiro, o <strong>Pricing</strong> não é apenas uma questão de margem sobre o custo (markup). É uma guerra de percepção de valor. A Heineken 330ml (Long Neck) é frequentemente utilizada como um <strong>Produto Gerador de Tráfego (KVI - Known Value Item)</strong>.</p>
+<p>Se o preço sobe 5%, o cliente não apenas deixa de comprar a Heineken; ele pode mudar de loja para fazer toda a sua compra do mês. Como analista e engenheiro de dados, meu papel é quantificar esse risco através da <strong>Elasticidade-Preço da Demanda</strong>.</p>
+</section>
+<section id="a-stack-tecnológica-por-que-polars" class="level2">
+<h2 class="anchored" data-anchor-id="a-stack-tecnológica-por-que-polars">A Stack Tecnológica: Por que Polars?</h2>
+<p>Nesta análise, utilizei a biblioteca <strong>Polars</strong> em Python. No contexto de engenharia de dados moderna, o Polars supera o Pandas em performance (multi-threading) e eficiência de memória, sendo ideal para processar grandes volumes de cupons fiscais (POS Data).</p>
+<p>```python import polars as pl import numpy as np</p>
+</section>
+<section id="simulando-dados-de-venda-com-variação-de-preço" class="level1">
+<h1>Simulando dados de venda com variação de preço</h1>
+<p>data = pl.DataFrame({ “semana”: range(1, 11), “preco_heineken”: [5.99, 5.99, 6.49, 6.49, 5.79, 5.79, 6.99, 6.99, 5.49, 5.49], “vendas_unidades”: [1200, 1150, 800, 780, 1500, 1450, 400, 380, 1800, 1750] })</p>
+</section>
+<section id="calculando-a-elasticidade-log-log-rápida-e-eficiente" class="level1">
+<h1>Calculando a Elasticidade Log-Log (Rápida e Eficiente)</h1>
+<p>data = data.with_columns([ pl.col(“preco_heineken”).log().alias(“log_p”), pl.col(“vendas_unidades”).log().alias(“log_q”)])</p>
+<p>print(data.head())</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="VmFyZWpvJTJDUHJpY2luZyUyQ1B5dGhvbiUyQ1BvbGFycyUyQ0NpJUMzJUFBbmNpYSUyMGRlJTIwRGFkb3M=" data-listing-date-sort="1772496000000" data-listing-file-modified-sort="1772551022071" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="201">
-<div class="thumbnail"><a href="./posts/01-pricing-heineken/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/01-pricing-heineken/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/01-pricing-heineken/index.html" class="no-external">Otimização de Pricing no Varejo: Elasticidade Cruzada com Polars e Python</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/01-pricing-heineken/index.html" class="no-external">Análise Estratégica: O impacto do preço da Heineken 330ml na categoria de Cervejas Premium.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VmFyZWpv'); return false;">Varejo</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHJpY2luZw=='); return false;">Pricing</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UG9sYXJz'); return false;">Polars</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2klQzMlQUFuY2lhJTIwZGUlMjBEYWRvcw=='); return false;">Ciência de Dados</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/01-pricing-heineken/index.html" class="no-external">
-No cenário competitivo do varejo e atacado brasileiro, o <strong>Pricing</strong> não é apenas uma questão de margem sobre o custo (markup). É uma guerra de percepção de valor. A Heineken…<strong></strong>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/01-pricing-heineken/index.html" class="no-external">
-<div class="listing-date">
-3 de mar. de 2026
-</div>
-<div class="listing-author">
-Janderson Batista Abreu
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">Nenhum item correspondente</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

@@ -10,6 +10,48 @@
 <atom:link href="https://jandersolutions.github.io/estudos_analises/index.xml" rel="self" type="application/rss+xml"/>
 <description>Análises estratégicas de varejo, inteligência de negócios e IA.</description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Tue, 03 Mar 2026 15:08:03 GMT</lastBuildDate>
+<lastBuildDate>Tue, 03 Mar 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Otimização de Pricing no Varejo: Elasticidade Cruzada com Polars e Python</title>
+  <dc:creator>Janderson Batista Abreu</dc:creator>
+  <link>https://jandersolutions.github.io/estudos_analises/posts/01-pricing-heineken/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="o-desafio-de-negócio-no-varejo-de-autosserviço" class="level2">
+<h2 class="anchored" data-anchor-id="o-desafio-de-negócio-no-varejo-de-autosserviço">O Desafio de Negócio no Varejo de Autosserviço</h2>
+<p>No cenário competitivo do varejo e atacado brasileiro, o <strong>Pricing</strong> não é apenas uma questão de margem sobre o custo (markup). É uma guerra de percepção de valor. A Heineken 330ml (Long Neck) é frequentemente utilizada como um <strong>Produto Gerador de Tráfego (KVI - Known Value Item)</strong>.</p>
+<p>Se o preço sobe 5%, o cliente não apenas deixa de comprar a Heineken; ele pode mudar de loja para fazer toda a sua compra do mês. Como analista e engenheiro de dados, meu papel é quantificar esse risco através da <strong>Elasticidade-Preço da Demanda</strong>.</p>
+</section>
+<section id="a-stack-tecnológica-por-que-polars" class="level2">
+<h2 class="anchored" data-anchor-id="a-stack-tecnológica-por-que-polars">A Stack Tecnológica: Por que Polars?</h2>
+<p>Nesta análise, utilizei a biblioteca <strong>Polars</strong> em Python. No contexto de engenharia de dados moderna, o Polars supera o Pandas em performance (multi-threading) e eficiência de memória, sendo ideal para processar grandes volumes de cupons fiscais (POS Data).</p>
+<p>```python import polars as pl import numpy as np</p>
+</section>
+<section id="simulando-dados-de-venda-com-variação-de-preço" class="level1">
+<h1>Simulando dados de venda com variação de preço</h1>
+<p>data = pl.DataFrame({ “semana”: range(1, 11), “preco_heineken”: [5.99, 5.99, 6.49, 6.49, 5.79, 5.79, 6.99, 6.99, 5.49, 5.49], “vendas_unidades”: [1200, 1150, 800, 780, 1500, 1450, 400, 380, 1800, 1750] })</p>
+</section>
+<section id="calculando-a-elasticidade-log-log-rápida-e-eficiente" class="level1">
+<h1>Calculando a Elasticidade Log-Log (Rápida e Eficiente)</h1>
+<p>data = data.with_columns([ pl.col(“preco_heineken”).log().alias(“log_p”), pl.col(“vendas_unidades”).log().alias(“log_q”)])</p>
+<p>print(data.head())</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Varejo</category>
+  <category>Pricing</category>
+  <category>Python</category>
+  <category>Polars</category>
+  <category>Ciência de Dados</category>
+  <guid>https://jandersolutions.github.io/estudos_analises/posts/01-pricing-heineken/</guid>
+  <pubDate>Tue, 03 Mar 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://jandersolutions.github.io/estudos_analises/posts/01-pricing-heineken/image.jpg" medium="image" type="image/jpeg"/>
+</item>
 </channel>
 </rss>

@@ -11,6 +11,27 @@
     "href": "index.html",
     "title": "blog",
     "section": "",
-    "text": "Nenhum item correspondente"
+    "text": "Otimização de Pricing no Varejo: Elasticidade Cruzada com Polars e Python\n\n\nAnálise Estratégica: O impacto do preço da Heineken 330ml na categoria de Cervejas Premium.\n\n\n\nVarejo\n\nPricing\n\nPython\n\nPolars\n\nCiência de Dados\n\n\n\n\n\n\n\n\n\n3 de mar. de 2026\n\n\nJanderson Batista Abreu\n\n\n\n\n\nNenhum item correspondente"
+  },
+  {
+    "objectID": "posts/01-pricing-heineken/index.html",
+    "href": "posts/01-pricing-heineken/index.html",
+    "title": "Otimização de Pricing no Varejo: Elasticidade Cruzada com Polars e Python",
+    "section": "",
+    "text": "No cenário competitivo do varejo e atacado brasileiro, o Pricing não é apenas uma questão de margem sobre o custo (markup). É uma guerra de percepção de valor. A Heineken 330ml (Long Neck) é frequentemente utilizada como um Produto Gerador de Tráfego (KVI - Known Value Item).\nSe o preço sobe 5%, o cliente não apenas deixa de comprar a Heineken; ele pode mudar de loja para fazer toda a sua compra do mês. Como analista e engenheiro de dados, meu papel é quantificar esse risco através da Elasticidade-Preço da Demanda."
+  },
+  {
+    "objectID": "posts/01-pricing-heineken/index.html#o-desafio-de-negócio-no-varejo-de-autosserviço",
+    "href": "posts/01-pricing-heineken/index.html#o-desafio-de-negócio-no-varejo-de-autosserviço",
+    "title": "Otimização de Pricing no Varejo: Elasticidade Cruzada com Polars e Python",
+    "section": "",
+    "text": "No cenário competitivo do varejo e atacado brasileiro, o Pricing não é apenas uma questão de margem sobre o custo (markup). É uma guerra de percepção de valor. A Heineken 330ml (Long Neck) é frequentemente utilizada como um Produto Gerador de Tráfego (KVI - Known Value Item).\nSe o preço sobe 5%, o cliente não apenas deixa de comprar a Heineken; ele pode mudar de loja para fazer toda a sua compra do mês. Como analista e engenheiro de dados, meu papel é quantificar esse risco através da Elasticidade-Preço da Demanda."
+  },
+  {
+    "objectID": "posts/01-pricing-heineken/index.html#a-stack-tecnológica-por-que-polars",
+    "href": "posts/01-pricing-heineken/index.html#a-stack-tecnológica-por-que-polars",
+    "title": "Otimização de Pricing no Varejo: Elasticidade Cruzada com Polars e Python",
+    "section": "A Stack Tecnológica: Por que Polars?",
+    "text": "A Stack Tecnológica: Por que Polars?\nNesta análise, utilizei a biblioteca Polars em Python. No contexto de engenharia de dados moderna, o Polars supera o Pandas em performance (multi-threading) e eficiência de memória, sendo ideal para processar grandes volumes de cupons fiscais (POS Data).\n```python import polars as pl import numpy as np"
   }
 ]
