@@ -1,6 +1,6 @@
 ---
 title: "Janderson Batista Abreu"
-image: profile.jpg # Se tiver uma foto sua, salve como profile.jpg nesta pasta
+image: profile.jpg
 about:
   template: jolla
   links:
@@ -12,12 +12,24 @@ about:
       href: https://github.com/Jandersolutions
 ---
 
-### 📊 Especialista em Ciência de Dados & BI
+## 📊 Estrategista de Dados | Varejo & Atacado
 
-Bacharel em **Ciência de Dados**, com **MBA em Inteligência Artificial** e **MBA em Business Intelligence e Estratégias Data-Driven**. 
+Com uma trajetória focada na intersecção entre tecnologia e negócios, atuo na transformação de grandes volumes de dados brutos em inteligência acionável. Minha abordagem une o rigor estatístico da **Ciência de Dados** à agilidade da **Engenharia de Dados** moderna.
 
-Minha missão é transformar grandes volumes de dados brutos em decisões estratégicas de alto impacto, especialmente no setor de **Varejo e Atacado**. Através da **Jandersolutions**, desenvolvo auditorias, otimização de pricing e modelos preditivos utilizando as stacks mais modernas do mercado, como **Polars**, **Python** e **R**.
+### 🎓 Formação Acadêmica
+* **Bacharel em Ciência de Dados**
+* **MBA em Inteligência Artificial**
+* **MBA em Business Intelligence e Estratégias Data-Driven**
 
-Neste blog, compartilho estudos de caso reais de "chão de loja", onde a teoria estatística encontra a realidade financeira do negócio.
+### 🛠️ Especialidades Técnicas
+Minha stack de trabalho é projetada para performance e reprodutibilidade:
+* **Engenharia de Dados:** Processamento de alto desempenho com **Polars** (Python) e Tidyverse (R).
+* **Ciência de Dados:** Modelagem de **Elasticidade de Preço**, Previsão de Demanda e Auditoria de Perdas.
+* **Infraestrutura:** Ambientes isolados em **Docker**, automação com **n8n** e versionamento Git/SSH.
 
-**Skills:** Python (Polars/Pandas), R (Tidyverse), Engenharia de Dados, Auditoria de Perecíveis e Dashboarding.
+### 🎯 Proposta de Valor
+A **Jandersolutions** nasceu da necessidade de levar inteligência de nível corporativo para o "chão de loja". Seja otimizando o pricing de uma categoria de bebidas ou auditando quebras ocultas em um açougue, meu foco é sempre o mesmo: **proteger e expandir a margem de lucro**.
+
+---
+
+*"Dados sem contexto de negócio são apenas ruído. Na Jandersolutions, transformamos esse ruído em lucro bruto."*
